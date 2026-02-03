@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff6a88, #ff99ac);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden;
+    transition: 1s;
+}
+
+body.night {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Main container */
+.main {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Name */
+.name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 54px;
+}
+
+/* Counter */
+.counter {
+    margin-top: 8px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Slideshow */
+.slideshow {
+    width: 240px;
+    height: 310px;
+    margin: 30px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+.slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: slide 9s infinite;
+}
+
+/* Love letter */
+.letter {
+    font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 26px;
+  max-width: 600px;   /* increase width to fit full lines */
+  margin: 30px auto;
+  white-space: pre-wrap; /* allow multiple lines */
+  overflow: hidden;
+  border-right: 2px solid white;
+  width: 0;
+  animation: typing 14s steps(100, end) forwards;
+}
+
+/* Buttons */
+button {
+    padding: 14px 28px;
+    border-radius: 40px;
+    border: none;
+    background: white;
+    color: #ff4b7d;
+    font-size: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* Proposal popup */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    color: #ff4b7d;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    width: 85%;
+}
+
+/* YES screen */
+.yes {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+}
+
+/* Rose petals */
+.rose {
+    position: absolute;
+    top: -30px;
+    animation: fall 9s linear infinite;
+}
+
+/* Animations */
+@keyframes slide {
+    0% { content: url("img1.jpg"); }
+    33% { content: url("img2.jpg"); }
+    66% { content: url("img3.jpg"); }
+}
+
+@keyframes typing {
+    to { width: 100%; }
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="main">
+    <div class="name">Mahzabeen Nisha ❤️</div>
+
+    <div class="counter">
+        It’s been 2years of choosing you, and I still would — without hesitation. 
+    </div>
+
+   <div class="romantic-image">
+  <img 
+    src="https://i.pinimg.com/736x/f1/73/a2/f173a24b697b60238e4b377281d26db1.jpg" 
+    alt="Romantic image">
+</div>
+
+
+    <!-- LOVE LETTER -->
+    <div class="letter">
+      Every heartbeat whispers your name.
+In the quiet of my soul, only you exist.
+You are my today, my tomorrow, my forever
+    </div>
+
+    <button onclick="openProposal()">💍 Will You Be My Valentine?</button>
+    <button onclick="night()">🌙 Night Mode</button>
+</div>
+
+<!-- Proposal -->
+<div class="overlay" id="proposal">
+    <div class="card">
+        <h3>
+            I don’t promise perfection,<br>
+            but I promise effort, loyalty,<br>
+            and a love that keeps choosing you.<br><br>
+            Will you be my Valentine? 💖
+        </h3>
+        <button onclick="yes()">YES ❤️</button>
+        <button onclick="no()">NO 🙈</button>
+    </div>
+</div>
+
+<!-- YES SCREEN -->
+<div class="yes" id="yes">
+    💍 SHE SAID YES 💍<br>❤️ FOREVER ❤️
+</div>
+
+<script>
+/* Rose animation */
+function rose() {
+    const r = document.createElement("div");
+    r.className = "rose";
+    r.innerHTML = "🌹";
+    r.style.left = Math.random() * 100 + "vw";
+    r.style.fontSize = Math.random() * 20 + 18 + "px";
+    document.body.appendChild(r);
+    setTimeout(() => r.remove(), 9000);
+}
+setInterval(rose, 600);
+
+/* Proposal */
+function openProposal() {
+    document.getElementById("proposal").style.display = "flex";
+}
+
+function yes() {
+    document.getElementById("proposal").style.display = "none";
+    document.getElementById("yes").style.display = "flex";
+}
+
+function no() {
+    alert("Nice try 😌❤️");
+}
+
+/* Night mode */
+function night() {
+    document.body.classList.toggle("night");
+}
+</script>
+
+</body>
+</html>
